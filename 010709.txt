@@ -1,0 +1,140 @@
+1.    $ git clone https://github.com/jane-dimeski/SI_2022_lab1_010709.git
+        го клонираме remote repo-то локално
+5.    $ git add shopping_list.txt
+        креираниот file shopping_list.txt се поставува tracked
+      $ git commit -m "Add 5 items to the shopping list"
+        commit со покара за додавање на содржина во file-от
+6.    $ git add shopping_list.txt
+      $ git commit -m "Add quantities to the items."
+7.    $ git branch branch1
+      $ git branch branch2
+      $ git branch
+        креираме две нови гранки branch1 и branch2 и ги листаме сите гранки во repo-то
+8.      Досегашни логови:
+
+        Cloning into 'SI_2022_lab1_010709'...
+        info: please complete authentication in your browser...
+        remote: Enumerating objects: 3, done.
+        remote: Counting objects: 100% (3/3), done.
+        remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+        Receiving objects: 100% (3/3), done.
+
+        [master 52524c2] Add 5 items to the shopping list
+        1 file changed, 5 insertions(+)
+        create mode 100644 shopping_list.txt
+
+        [master e65f525] Add quantities to the items
+        1 file changed, 5 insertions(+), 5 deletions(-)
+
+        branch1
+        branch2
+        * master
+9.    $ git push origin master
+        синхронизација со remote repo-то
+      $ git push origin branch1:branch1
+      $ git push origin branch2:branch2
+        синхронизација на новите две гранки и нивно соодветно именување на remote repo-то
+10.   $ git checkout branch1
+        префрлање на покажувачот кон гранката branch1
+11.   $ git add shopping_list.txt
+      $ git commit -m "Change quantity of item #5"
+12.   $ git checkout master
+        префрлање на покажувачот кон гранката master
+13.   $ git add shopping_list.txt
+      $ git commit -m "Change quantity of item #2"
+14.   $ git push origin master
+      $ git push origin branch1
+        синхронизација со remote repo-то
+15.   $ git checkout branch2
+        префрлање на покажувачот кон гранката branch2
+16.   $ git add shopping_list.txt
+      $ git commit -m "Modify item #4"
+17.     Досегашни логови:
+        
+        Enumerating objects: 7, done.
+        Counting objects: 100% (7/7), done.
+        Delta compression using up to 4 threads
+        Compressing objects: 100% (5/5), done.
+        Writing objects: 100% (6/6), 647 bytes | 647.00 KiB/s, done.
+        Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+        To https://github.com/jane-dimeski/SI_2022_lab1_010709.git
+        ce94c2d..e65f525  master -> master
+
+        Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+        remote:
+        remote: Create a pull request for 'branch1' on GitHub by visiting:
+        remote:      https://github.com/jane-dimeski/SI_2022_lab1_010709/pull/new/branch1
+        remote:
+        To https://github.com/jane-dimeski/SI_2022_lab1_010709.git
+        * [new branch]      branch1 -> branch1
+
+        Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+        remote:
+        remote: Create a pull request for 'branch2' on GitHub by visiting:
+        remote:      https://github.com/jane-dimeski/SI_2022_lab1_010709/pull/new/branch2
+        remote:
+        To https://github.com/jane-dimeski/SI_2022_lab1_010709.git
+        * [new branch]      branch2 -> branch2
+
+        Switched to branch 'branch1'
+
+        [branch1 b5b79a5] Change quantity of item #5
+         1 file changed, 1 insertion(+), 1 deletion(-)
+
+        Switched to branch 'master'
+        Your branch is up to date with 'origin/master'.
+
+        [master 10172d9] Change quantity of item #2
+         1 file changed, 1 insertion(+), 1 deletion(-)
+
+        Enumerating objects: 5, done.
+        Counting objects: 100% (5/5), done.
+        Delta compression using up to 4 threads
+        Compressing objects: 100% (3/3), done.
+        Writing objects: 100% (3/3), 341 bytes | 341.00 KiB/s, done.
+        Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+        To https://github.com/jane-dimeski/SI_2022_lab1_010709.git
+        e65f525..10172d9  master -> master
+
+        Switched to branch 'branch1'
+
+        Enumerating objects: 5, done.
+        Counting objects: 100% (5/5), done.
+        Delta compression using up to 4 threads
+        Compressing objects: 100% (3/3), done.
+        Writing objects: 100% (3/3), 326 bytes | 326.00 KiB/s, done.
+        Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+        remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+        To https://github.com/jane-dimeski/SI_2022_lab1_010709.git
+        e65f525..b5b79a5  branch1 -> branch1
+
+        Switched to branch 'branch2'
+
+        [branch2 0e62771] Modify item #4
+         Date: Mon Mar 21 23:42:09 2022 +0100
+         1 file changed, 1 insertion(+), 1 deletion(-)
+18.   $ git add shopping_list.txt
+      $ git commit --amend -m "Modify item #4 and add item #6"
+        Промена на пораката во последниот комит со --amend да соодветствува на последните промени
+19.     Досегашни логови:
+
+        [branch2 a59640c] Modify item #4 and add item #6
+         Date: Mon Mar 21 23:42:09 2022 +0100
+         1 file changed, 1 insertion(+), 1 deletion(-)
+20.   $ git checkout master
+        префрлање на покажувачот кон master
+      $ git merge branch1
+        спојување на гранката branch1 кон master
+        не се случуваат конфликти при извршувањето на наредбата
+        се користи "ort" стратегија
+21.   $ git merge branch2
+        се појавуваат конфликти и автоматското спојување не е возможно
+        конфликтите се решаваат со прифаќање на измените од гранката branch2
+        >> Accept incoming changes
+      $ git add shopping_list.txt
+        file-от shopping_list.txt се поставува како modified
+      $ git merge --continue
+        продолжуваме со спојувањето по разрешување на конфликтите
+22.   $ git add 010709.txt
+      $ git commit -m "Add docs"
+23.   $ git push origin master
