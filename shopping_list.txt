@@ -1,5 +1,6 @@
 Milk x 1
 Eggs x 10
 Bananas x 5
-Butter x 1
+Butter x 2
 Yogurt x 2
+Apples x 4
